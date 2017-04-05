@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FundManager", "FundManager\FundManager.csproj", "{0BD15A43-7869-4AFC-A569-811866C617FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FundManager.Impl", "FundManager.Impl\FundManager.Impl.csproj", "{DEC504D1-9765-4DC7-8EBB-0D3E5522D28E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FundManager.Impl.Tests", "FundManager.Impl.Tests\FundManager.Impl.Tests.csproj", "{1E529F4A-1354-4BF2-A882-F81755EF9489}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0BD15A43-7869-4AFC-A569-811866C617FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BD15A43-7869-4AFC-A569-811866C617FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BD15A43-7869-4AFC-A569-811866C617FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BD15A43-7869-4AFC-A569-811866C617FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEC504D1-9765-4DC7-8EBB-0D3E5522D28E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEC504D1-9765-4DC7-8EBB-0D3E5522D28E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEC504D1-9765-4DC7-8EBB-0D3E5522D28E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEC504D1-9765-4DC7-8EBB-0D3E5522D28E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E529F4A-1354-4BF2-A882-F81755EF9489}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E529F4A-1354-4BF2-A882-F81755EF9489}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E529F4A-1354-4BF2-A882-F81755EF9489}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E529F4A-1354-4BF2-A882-F81755EF9489}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
