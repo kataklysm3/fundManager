@@ -42,16 +42,27 @@
   <ItemGroup>
     <Compile Include="Domain\Contracts\Commands\AddStockCommand.cs" />
     <Compile Include="Domain\Contracts\Commands\CreateFundCommand.cs" />
+    <Compile Include="Domain\Contracts\Commands\CreateStockCommand.cs" />
     <Compile Include="Domain\Contracts\Events\FundCreated.cs" />
+    <Compile Include="Domain\Contracts\Events\StockAdded.cs" />
+    <Compile Include="Domain\Contracts\Events\StockCreated.cs" />
     <Compile Include="Domain\Contracts\FundId.cs" />
+    <Compile Include="Domain\Contracts\StockId.cs" />
     <Compile Include="Domain\Contracts\StockPrice.cs" />
+    <Compile Include="Domain\FundAggregate\FundManagerService.cs" />
     <Compile Include="Domain\FundAggregate\FundState.cs" />
+    <Compile Include="Domain\StockAggregate\Stock.cs" />
+    <Compile Include="Domain\StockAggregate\StockManagerService.cs" />
+    <Compile Include="Domain\StockAggregate\StockState.cs" />
     <Compile Include="ICommandsHandlingService.cs" />
     <Compile Include="ICommand.cs" />
+    <Compile Include="IIdentity.cs" />
     <Compile Include="IEvent.cs" />
     <Compile Include="Domain\FundAggregate\Fund.cs" />
     <Compile Include="IPricingService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Storage\EventStream.cs" />
+    <Compile Include="Storage\IEventStorage.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

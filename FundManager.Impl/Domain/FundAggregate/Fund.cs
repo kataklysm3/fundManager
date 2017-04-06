@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using FundManager.Impl.Domain.Contracts;
 using FundManager.Impl.Domain.Contracts.Events;
 
@@ -25,14 +22,14 @@ namespace FundManager.Impl.Domain.FundAggregate
             Changes.Add(e);
         }
 
-        public void Create(FundId id, string name, DateTime timeAdded)
+        public void Create(string name, DateTime timeAdded)
         {
             if(_state.Created)
                 throw new InvalidOperationException("Fund was already created");
 
             Apply(new FundCreated()
             {
-                Id = id,
+                Id = _state.FundId,
                 Created = timeAdded,
                 Name = name
             });
@@ -40,7 +37,15 @@ namespace FundManager.Impl.Domain.FundAggregate
 
         public void AddStock(string name, StockPrice price, int quantity, DateTime timeAdded)
         {
-            
+            Apply(new StockAdded()
+            {
+                FundId = _state.FundId,
+                StockName = name,
+                Price = price,
+                Quantity = quantity,
+                TimeAdded = timeAdded,
+                Transaction = _state.MaxTransactionId + 1
+            });
         }
     }
 }
