@@ -2,17 +2,22 @@
 using System.Collections.Generic;
 using FundManager.Impl.Domain.Contracts;
 using FundManager.Impl.Domain.Contracts.Events;
+using FundManager.Impl.Domain.StockAggregate;
 
 namespace FundManager.Impl.Domain.FundAggregate
 {
-    public class Fund
+    public class Fund: IChildEntitiesAware<IEvent>
     {
         public readonly IList<IEvent> Changes = new List<IEvent>();
 
         private readonly FundState _state;
 
+        private readonly EntityList<Stock, IEvent> _stocks;
+
         public Fund(IEnumerable<IEvent> events)
         {
+            _stocks = new EntityList<Stock, IEvent>(this);
+
             _state = new FundState(events);
         }
 
@@ -46,6 +51,11 @@ namespace FundManager.Impl.Domain.FundAggregate
                 TimeAdded = timeAdded,
                 Transaction = _state.MaxTransactionId + 1
             });
+        }
+
+        public void RegisterChildEventProvider(IEntityEventProvider<IEvent> entityEventProvider)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -49,8 +49,11 @@
     <Compile Include="Domain\Contracts\FundId.cs" />
     <Compile Include="Domain\Contracts\StockId.cs" />
     <Compile Include="Domain\Contracts\StockPrice.cs" />
+    <Compile Include="Domain\EntityList.cs" />
     <Compile Include="Domain\FundAggregate\FundManagerService.cs" />
     <Compile Include="Domain\FundAggregate\FundState.cs" />
+    <Compile Include="Domain\IChildEntitiesAware.cs" />
+    <Compile Include="Domain\IEntityEventProvider.cs" />
     <Compile Include="Domain\StockAggregate\Stock.cs" />
     <Compile Include="Domain\StockAggregate\StockManagerService.cs" />
     <Compile Include="Domain\StockAggregate\StockState.cs" />

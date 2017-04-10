@@ -15,7 +15,6 @@ namespace FundManager.Impl.Domain.FundAggregate
             }
         }
 
-        //public IList<Stock> Stocks { get; private set; }
         public string FundName { get; private set; }
         public FundId FundId { get; private set; }
         public bool Created { get; private set; }
@@ -26,7 +25,6 @@ namespace FundManager.Impl.Domain.FundAggregate
             Created = true;
             FundName = e.Name;
             FundId = e.Id;
-            //Stocks = new List<Stock>();
         }
 
         public void When(StockAdded e)

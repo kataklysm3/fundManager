@@ -5,7 +5,7 @@ using FundManager.Impl.Domain.Contracts.Events;
 
 namespace FundManager.Impl.Domain.StockAggregate
 {
-    public class Stock
+    public class Stock: IEntityEventProvider<IEvent>
     {
         private readonly StockState _state;
         public readonly IList<IEvent> Changes = new List<IEvent>();
