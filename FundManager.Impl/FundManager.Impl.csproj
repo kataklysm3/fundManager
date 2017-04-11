@@ -42,7 +42,6 @@
   <ItemGroup>
     <Compile Include="Domain\Contracts\Commands\AddStockCommand.cs" />
     <Compile Include="Domain\Contracts\Commands\CreateFundCommand.cs" />
-    <Compile Include="Domain\Contracts\Commands\CreateStockCommand.cs" />
     <Compile Include="Domain\Contracts\Events\FundCreated.cs" />
     <Compile Include="Domain\Contracts\Events\StockAdded.cs" />
     <Compile Include="Domain\Contracts\Events\StockCreated.cs" />
