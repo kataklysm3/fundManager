@@ -1,12 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FundManager.Impl.Domain.Contracts.Commands
 {
-    class CreateFundCommand : ICommand
+    [Serializable]
+    public class CreateFundCommand : ICommand
     {
+        public FundId Id { get; set; }
+
+        public string Name { get; set; }
+
+        public override string ToString()
+        {
+            return $"Created Fund {Name} id {Id}";
+        }
     }
 }

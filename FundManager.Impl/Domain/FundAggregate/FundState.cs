@@ -1,14 +1,16 @@
 ﻿using System.Collections.Generic;
 using FundManager.Impl.Domain.Contracts;
 using FundManager.Impl.Domain.Contracts.Events;
-using FundManager.Impl.Domain.StockAggregate;
 
 namespace FundManager.Impl.Domain.FundAggregate
 {
     internal class FundState
     {
+        private readonly IList<Stock> _stocks;
+
         public FundState(IEnumerable<IEvent> events)
         {
+            _stocks = new List<Stock>();
             foreach (var e in events)
             {
                 Mutate(e);
@@ -29,6 +31,13 @@ namespace FundManager.Impl.Domain.FundAggregate
 
         public void When(StockAdded e)
         {
+            _stocks.Add(new Stock()
+            {
+                Name = e.StockName,
+                StockId = e.Id,
+                Price = e.Price,
+                Quantity = e.Quantity
+            });
             MaxTransactionId = e.Transaction;
         }
 

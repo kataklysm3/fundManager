@@ -5,7 +5,7 @@ namespace FundManager.Impl.Domain.Contracts.Events
     [Serializable]
     public class StockAdded : IEvent
     {
-        public FundId FundId { get; set; }
+        public StockId Id { get; set; }
         public string StockName { get; set; }
         public StockPrice Price { get; set; }
         public int Quantity { get; set; }
@@ -14,7 +14,7 @@ namespace FundManager.Impl.Domain.Contracts.Events
 
         public override string ToString()
         {
-            return $"Added '{StockName}' to Fund '{FundId}' Price = {Price}";
+            return $"Added '{StockName}' with Id '{Id}' Price = {Price}";
         }
     }
 }
