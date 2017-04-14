@@ -62,6 +62,7 @@
       <DependentUpon>FundLoadEvents.feature</DependentUpon>
     </Compile>
     <Compile Include="BDD\Steps\FundCreationSteps.cs" />
+    <Compile Include="BDD\Steps\TableExtensions.cs" />
     <Compile Include="Domain\FundTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

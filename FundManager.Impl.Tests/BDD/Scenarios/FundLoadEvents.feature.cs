@@ -31,8 +31,7 @@ namespace FundManager.Impl.Tests.BDD.Scenarios
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "FundLoadEvents", "\tIn order to avoid silly mistakes\r\n\tAs a math idiot\r\n\tI want to be told the sum o" +
-                    "f two numbers", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "FundLoadEvents", "\tI want to make some operations\r\n\twith fund service and see the result events", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -71,7 +70,7 @@ namespace FundManager.Impl.Tests.BDD.Scenarios
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("CreateFundWithStocks", new string[] {
                         "mytag"});
-#line 7
+#line 6
 this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
@@ -83,13 +82,30 @@ this.ScenarioSetup(scenarioInfo);
             table1.AddRow(new string[] {
                         "2",
                         "My second fund"});
-#line 8
- testRunner.Given("I have created fund with parameters:", ((string)(null)), table1, "Given ");
-#line 12
-    testRunner.And("I have entered 70 into the calculator", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 13
+#line 7
+ testRunner.Given("I have created fund items with parameters:", ((string)(null)), table1, "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
+                        "StockId",
+                        "Name",
+                        "FundId"});
+            table2.AddRow(new string[] {
+                        "1",
+                        "My first stock",
+                        "1"});
+            table2.AddRow(new string[] {
+                        "2",
+                        "My second stock",
+                        "1"});
+            table2.AddRow(new string[] {
+                        "3",
+                        "My third stock",
+                        "2"});
+#line 11
+    testRunner.And("I have added stocks to my fund:", ((string)(null)), table2, "And ");
+#line 16
  testRunner.When("I press add", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 14
+#line 17
  testRunner.Then("the result should be 120 on the screen", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

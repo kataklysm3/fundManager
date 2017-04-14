@@ -19,12 +19,12 @@ namespace FundManager.Impl.Domain.FundAggregate
             ((dynamic) this).When((dynamic) cmd);
         }
 
-        public void When(CreateFundCommand c)
+        private void When(CreateFundCommand c)
         {
             Update(c.Id, a => a.Create(c.Name, DateTime.UtcNow));
         }
 
-        public void When(AddStockCommand c)
+        private void When(AddStockCommand c)
         {
             Update(c.FundId, a => a.AddStock(c.StockName, c.Price, c.Quantity, DateTime.UtcNow));
         }

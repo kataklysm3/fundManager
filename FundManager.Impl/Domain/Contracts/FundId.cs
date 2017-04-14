@@ -2,5 +2,11 @@
 {
     public class FundId : IIdentity
     {
+        public FundId(int id)
+        {
+            Id = id;
+        }
+
+        public int Id { get; set; }
     }
 }
