@@ -58,8 +58,12 @@
     <Compile Include="Domain\FundAggregate\Fund.cs" />
     <Compile Include="IPricingService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Storage\DataWithName.cs" />
+    <Compile Include="Storage\DataWithVersion.cs" />
+    <Compile Include="Storage\EventStorage.cs" />
     <Compile Include="Storage\EventStream.cs" />
     <Compile Include="Storage\IEventStorage.cs" />
+    <Compile Include="Storage\IStore.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -72,6 +72,8 @@ namespace FundManager.Impl.Tests.BDD.Scenarios
                         "mytag"});
 #line 6
 this.ScenarioSetup(scenarioInfo);
+#line 7
+ testRunner.Given("I have setuped fund service", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
                         "Id",
@@ -82,8 +84,8 @@ this.ScenarioSetup(scenarioInfo);
             table1.AddRow(new string[] {
                         "2",
                         "My second fund"});
-#line 7
- testRunner.Given("I have created fund items with parameters:", ((string)(null)), table1, "Given ");
+#line 8
+    testRunner.When("I have created fund items with parameters:", ((string)(null)), table1, "When ");
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
                         "StockId",
@@ -101,12 +103,17 @@ this.ScenarioSetup(scenarioInfo);
                         "3",
                         "My third stock",
                         "2"});
-#line 11
-    testRunner.And("I have added stocks to my fund:", ((string)(null)), table2, "And ");
-#line 16
- testRunner.When("I press add", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 12
+    testRunner.When("I have added stocks to my fund:", ((string)(null)), table2, "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
+                        "EventName",
+                        "Id"});
+            table3.AddRow(new string[] {
+                        "1",
+                        "My first stock"});
 #line 17
- testRunner.Then("the result should be 120 on the screen", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("I can see the fund events:", ((string)(null)), table3, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
