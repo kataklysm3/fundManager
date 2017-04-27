@@ -35,11 +35,11 @@ namespace FundManager.Impl.Domain.FundAggregate
             });
         }
 
-        public void AddStock(string name, StockPrice price, int quantity, DateTime timeAdded)
+        public void AddStock(string name, StockId stockId, StockPrice price, int quantity, DateTime timeAdded)
         {
             Apply(new StockAdded()
             {
-                Id = new StockId(new Guid()),
+                Id = stockId,
                 StockName = name,
                 Price = price,
                 Quantity = quantity,

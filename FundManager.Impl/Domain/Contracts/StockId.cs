@@ -4,11 +4,16 @@ namespace FundManager.Impl.Domain.Contracts
 {
     public class StockId: IIdentity
     {
-        public Guid Id { get; }
+        public int Id { get; }
 
-        public StockId(Guid id)
+        public StockId(int id)
         {
             Id = id;
+        }
+
+        public override string ToString()
+        {
+            return Id.ToString();
         }
     }
 }

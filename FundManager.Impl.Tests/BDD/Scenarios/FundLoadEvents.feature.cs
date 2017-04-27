@@ -90,28 +90,44 @@ this.ScenarioSetup(scenarioInfo);
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
                         "StockId",
                         "Name",
-                        "FundId"});
+                        "FundId",
+                        "Price"});
             table2.AddRow(new string[] {
                         "1",
                         "My first stock",
-                        "1"});
+                        "1",
+                        "12"});
             table2.AddRow(new string[] {
                         "2",
                         "My second stock",
-                        "1"});
+                        "1",
+                        "24"});
             table2.AddRow(new string[] {
                         "3",
                         "My third stock",
-                        "2"});
+                        "2",
+                        "56"});
 #line 12
     testRunner.When("I have added stocks to my fund:", ((string)(null)), table2, "When ");
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
-                        "EventName",
-                        "Id"});
+                        "Id",
+                        "EventName"});
             table3.AddRow(new string[] {
                         "1",
-                        "My first stock"});
+                        "Fund \'My first fund\' was created"});
+            table3.AddRow(new string[] {
+                        "1",
+                        "Added \'My first stock\' with Id \'1\' Price = 12"});
+            table3.AddRow(new string[] {
+                        "1",
+                        "Added \'My second stock\' with Id \'2\' Price = 24"});
+            table3.AddRow(new string[] {
+                        "2",
+                        "Fund \'My second fund\' was created"});
+            table3.AddRow(new string[] {
+                        "2",
+                        "Added \'My third stock\' with Id \'3\' Price = 56"});
 #line 17
  testRunner.Then("I can see the fund events:", ((string)(null)), table3, "Then ");
 #line hidden

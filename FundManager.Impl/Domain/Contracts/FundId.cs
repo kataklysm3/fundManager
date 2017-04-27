@@ -9,6 +9,11 @@
 
         public int Id { get; set; }
 
+        public override string ToString()
+        {
+            return Id.ToString();
+        }
+
         public override bool Equals(object obj)
         {
             if (obj == null || GetType() != obj.GetType())

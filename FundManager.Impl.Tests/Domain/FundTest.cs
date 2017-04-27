@@ -27,16 +27,18 @@ namespace FundManager.Impl.Tests.Domain
         public void AddStockToFundTest()
         {
             var stockName = "stock1";
+            var stockId = new StockId(1);
             var price = new StockPrice {Amount = 10};
             var quantity = 10;
             var dateCreated = new DateTime(2000, 1, 1);
-            _fundForTesting.AddStock(stockName, price, quantity, dateCreated);
+            _fundForTesting.AddStock(stockName, stockId, price, quantity, dateCreated);
             Assert.AreEqual(1, _fundForTesting.Changes.Count);
             Assert.IsTrue(_fundForTesting.Changes[0] is StockAdded);
             Assert.AreEqual(stockName, ((StockAdded) _fundForTesting.Changes[0]).StockName);
             Assert.AreEqual(price, ((StockAdded) _fundForTesting.Changes[0]).Price);
             Assert.AreEqual(quantity, ((StockAdded) _fundForTesting.Changes[0]).Quantity);
             Assert.AreEqual(dateCreated, ((StockAdded) _fundForTesting.Changes[0]).TimeAdded);
+            Assert.AreEqual(stockId, ((StockAdded) _fundForTesting.Changes[0]).Id);
         }
 
         [Test]

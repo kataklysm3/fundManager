@@ -1,4 +1,6 @@
-﻿namespace FundManager.Impl.Domain.Contracts
+﻿using System.Globalization;
+
+namespace FundManager.Impl.Domain.Contracts
 {
     /// <summary>
     /// Price of the stock entity,
@@ -11,6 +13,11 @@
         public StockPrice(decimal amount)
         {
             Amount = amount;
+        }
+
+        public override string ToString()
+        {
+            return Amount.ToString(CultureInfo.InvariantCulture);
         }
     }
 }

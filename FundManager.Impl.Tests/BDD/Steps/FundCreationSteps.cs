@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using FundManager.Impl.Domain.Contracts;
 using FundManager.Impl.Domain.Contracts.Commands;
 using FundManager.Impl.Domain.FundAggregate;
 using FundManager.Impl.Storage;
 using Moq;
+using NUnit.Framework;
 using TechTalk.SpecFlow;
 
 namespace FundManager.Impl.Tests.BDD.Steps
@@ -13,12 +13,13 @@ namespace FundManager.Impl.Tests.BDD.Steps
     [Binding]
     public class FundCreationSteps
     {
-        private FundManagerService _fundManagerService;
+        private readonly Dictionary<IIdentity, ICollection<IEvent>> _eventsDictionary =
+            new Dictionary<IIdentity, ICollection<IEvent>>();
+
         private Mock<IEventStorage> _eventStorageMock;
+        private FundManagerService _fundManagerService;
 
-        private Dictionary<IIdentity, ICollection<IEvent>> _eventsDictionary = new Dictionary<IIdentity, ICollection<IEvent>>();
-
-        [BeforeScenario()]
+        [BeforeScenario]
         public void BeforeScenarioHook()
         {
             _eventStorageMock = new Mock<IEventStorage>();
@@ -29,8 +30,8 @@ namespace FundManager.Impl.Tests.BDD.Steps
                     if (_eventsDictionary.ContainsKey(i)
                         && _eventsDictionary[i] != null)
                     {
-                        var newList = new List<IEvent>(c);
-                        newList.AddRange(_eventsDictionary[i]);
+                        var newList = new List<IEvent>(_eventsDictionary[i]);
+                        newList.AddRange(c);
                         _eventsDictionary[i] = newList;
                     }
                     else
@@ -39,7 +40,7 @@ namespace FundManager.Impl.Tests.BDD.Steps
                     }
                 });
             _eventStorageMock.Setup(p => p.LoadEventStream(It.IsAny<IIdentity>())).Returns(
-                new EventStream() { Events = new List<IEvent>() });
+                new EventStream { Events = new List<IEvent>() });
         }
 
         [Given(@"I have setuped fund service")]
@@ -53,13 +54,11 @@ namespace FundManager.Impl.Tests.BDD.Steps
         {
             var fundList = fundValues.ParseTable();
             foreach (var fund in fundList)
-            {
-                _fundManagerService.Execute(new CreateFundCommand()
+                _fundManagerService.Execute(new CreateFundCommand
                 {
                     Id = new FundId(int.Parse(fund["Id"])),
                     Name = fund["Name"]
                 });
-            }
         }
 
         [When(@"I have added stocks to my fund:")]
@@ -67,19 +66,31 @@ namespace FundManager.Impl.Tests.BDD.Steps
         {
             var stockList = stocksValue.ParseTable();
             foreach (var stock in stockList)
-            {
-                _fundManagerService.Execute(new AddStockCommand()
+                _fundManagerService.Execute(new AddStockCommand
                 {
                     FundId = new FundId(int.Parse(stock["FundId"])),
-                    StockName = stock["Name"]
+                    StockId = new StockId(int.Parse(stock["StockId"])),
+                    StockName = stock["Name"],
+                    Price = new StockPrice(decimal.Parse(stock["Price"]))
                 });
-            }
         }
 
         [Then(@"I can see the fund events:")]
         public void ThenFundEventsWillBe(Table events)
         {
+            var actualCollection = _eventsDictionary.SelectMany(p => p.Value,
+                (parent, child) => new { FundId = ((FundId)parent.Key).Id.ToString(), Name = child.ToString() }).ToList();
 
+            var expectedCollection = events.Rows.Select(p => new
+            {
+                FundId = p.Values.ElementAt(0),
+                Name = p.Values.ElementAt(1)
+            }).ToList();
+
+            CollectionAssert.AreEqual(
+                expectedCollection,
+                actualCollection,
+                "Events are not the same");
         }
     }
 }

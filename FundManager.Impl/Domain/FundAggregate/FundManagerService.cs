@@ -26,7 +26,7 @@ namespace FundManager.Impl.Domain.FundAggregate
 
         private void When(AddStockCommand c)
         {
-            Update(c.FundId, a => a.AddStock(c.StockName, c.Price, c.Quantity, DateTime.UtcNow));
+            Update(c.FundId, a => a.AddStock(c.StockName, c.StockId, c.Price, c.Quantity, DateTime.UtcNow));
         }
 
         private void Update(FundId id, Action<Fund> executeAction)
